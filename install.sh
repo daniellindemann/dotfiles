@@ -15,7 +15,7 @@ if [[ -z $zsh_installed ]]; then
 fi
 
 if [[ $zsh_installed ]]; then
-    chsh -s $(which zsh)
+    # chsh -s $(which zsh)
     # install zsh
     wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
     printf $OUTPUT_LIGHTGREEN "oh-my-zsh installed"
