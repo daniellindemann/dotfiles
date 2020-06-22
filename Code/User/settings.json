@@ -1,0 +1,12 @@
+{
+    "workbench.colorTheme": "Matey",
+    "explorer.openEditors.visible": 3,
+    "editor.suggestSelection": "first",
+    "editor.fontFamily": "'Fira Code'",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 16,
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "codespaces.accountProvider": "Microsoft",
+    "workbench.iconTheme": "material-icon-theme",
+    "todo-tree.tree.showScanModeButton": false
+}
