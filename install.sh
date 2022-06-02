@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git_mail=$1
+git_mail=${1:-"$GIT_EMAIL"}   # you can pass an argument with the git mail otherwise the GIT_EMAIL env variable is used
 
 echo ""
 echo "Setting up linux dotfiles"
