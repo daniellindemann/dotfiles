@@ -2,6 +2,7 @@
     email = daniel@dlindemann.de
     name = Daniel Lindemann
 [core]
+    autocrlf = input
     editor = code --wait
 [diff]
     tool = vscode
