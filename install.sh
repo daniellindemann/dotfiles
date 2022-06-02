@@ -15,9 +15,9 @@ OUTPUT_LIGHTYELLOW="\033[93m%s\n\033[0m"
 zsh_installed=$(command -v zsh)
 if [[ -z $zsh_installed ]]; then
     printf $OUTPUT_LIGHTYELLOW "You need to install zsh and run this script again"
-else
-    printf $OUTPUT_LIGHTYELLOW "Set zsh as default shell"
-    chsh -s $(which zsh)
+# else
+#     printf $OUTPUT_LIGHTYELLOW "Set zsh as default shell"
+#     chsh -s $(which zsh)
 fi
 
 if [[ $zsh_installed ]]; then
