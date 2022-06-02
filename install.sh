@@ -38,6 +38,7 @@ working_dir=$(pwd)
 printf $OUTPUT_LIGHTMAGENTA "Linking common dotfiles"
 ln -sfv "${working_dir}/gitconfig" "${HOME}/.gitconfig" > /dev/null
 ln -sfv "${working_dir}/zshrc" "${HOME}/.zshrc" > /dev/null
+ln -sfv "${working_dir}/p10k.zsh" "${HOME}/.p10k.zsh" > /dev/null
 ln -sfv "${working_dir}/editorconfig" "${HOME}/.editorconfig" > /dev/null
 ln -sfv "${working_dir}/angular-config.json" "${HOME}/angular-config.json" > /dev/null
 printf $OUTPUT_LIGHTGREEN "Common dotfiles linked"
