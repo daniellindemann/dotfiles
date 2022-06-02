@@ -49,4 +49,7 @@ if [[ ! -z $git_mail ]]; then
     git config --global user.email "$git_mail"
 fi
 
+# download azure cli autocompletion
+wget -q https://raw.githubusercontent.com/Azure/azure-cli/dev/az.completion -O $HOME/az.completion
+
 printf $OUTPUT_LIGHTGREEN "dotfiles installed"

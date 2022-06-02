@@ -145,4 +145,4 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # az cli autocompletion
-source /etc/bash_completion.d/azure-cli
+source $HOME/az.completion
