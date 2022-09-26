@@ -1,9 +1,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -16,6 +16,12 @@ export PATH="$PATH:$HOME/.dapr/bin"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+
+# set asp.net certs, if in wsl
+if ! [ -z WSL_DISTRO_NAME ]; then
+	export ASPNETCORE_Kestrel__Certificates__Default__Password="password"
+	export ASPNETCORE_Kestrel__Certificates__Default__Path="$HOME/.aspnet/https/aspnetapp.pfx"
+fi
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -88,6 +94,10 @@ plugins=(
 	ssh-agent
 )
 
+# configure plugins
+## allow agent forwarding
+zstyle :omz:plugins:ssh-agent agent-forwarding yes
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -116,6 +126,7 @@ function GitFetchDeleteDone()
   git fetch -p && for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}'); do git branch -D $branch; done
 }
 
+function winget { pushd -q; cd /mnt/c/; cmd.exe /c "winget $@"; popd -q; }
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -131,8 +142,18 @@ alias gut="git"
 alias k="kubectl"
 alias ngrokhttp="ngrok http -host-header=localhost"
 alias t="terraform"
+alias bicep="az bicep"
 alias ssha="eval $(ssh-agent) && ssh-add"
 alias git-fetch-delete-done=GitFetchDeleteDone
+alias explorer="explorer.exe"
+
+# conditional aliases
+if ! [ -x "$(command -v kubectx)" ]; then
+  alias kubectx="kubectl ctx"
+fi
+if ! [ -x "$(command -v kubens)" ]; then
+  alias kubens="kubectl ns"
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -146,3 +167,6 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # az cli autocompletion
 source $HOME/az.completion
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
