@@ -53,7 +53,7 @@ fi
 wget -q https://raw.githubusercontent.com/Azure/azure-cli/dev/az.completion -O $HOME/az.completion
 
 # set wsl settings
-if [[ ! -z WSL_DISTRO_NAME ]]; then
+if [[ ! -z $WSL_DISTRO_NAME ]]; then
     printf $OUTPUT_LIGHTMAGENTA "Set WSL specific config"
     WINHOME="$(wslpath $(cmd.exe /C "echo | set /p _=%USERPROFILE%"))"  # getting users windows profile directory as wsl path
     mkdir -p "${HOME}/.aspnet" && ln -sfv "${WINHOME}/.aspnet/https" "${HOME}/.aspnet/https" > /dev/null    # link aspnet https cert

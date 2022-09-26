@@ -18,7 +18,7 @@ export PATH="$PATH:$HOME/.dapr/bin"
 export ZSH="$HOME/.oh-my-zsh"
 
 # set asp.net certs, if in wsl
-if ! [ -z WSL_DISTRO_NAME ]; then
+if ! [ -z $WSL_DISTRO_NAME ]; then
 	export ASPNETCORE_Kestrel__Certificates__Default__Password="password"
 	export ASPNETCORE_Kestrel__Certificates__Default__Path="$HOME/.aspnet/https/aspnetapp.pfx"
 fi
